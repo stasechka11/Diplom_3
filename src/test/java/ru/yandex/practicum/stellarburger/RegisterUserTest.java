@@ -3,7 +3,6 @@ package ru.yandex.practicum.stellarburger;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.practicum.stellarburger.api.User;
@@ -45,7 +44,7 @@ public class RegisterUserTest {
     public void registerUserTest() {
         user = User.getRandomUser();
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
-        mainPage.clickUserAccountButton();
+        mainPage.clickUserAccountLink();
         LoginPage loginPage = page(LoginPage.class);
         loginPage.clickRegisterLink();
 
