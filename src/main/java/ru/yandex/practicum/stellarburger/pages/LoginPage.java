@@ -27,8 +27,20 @@ public class LoginPage {
         registerLink.click();
     }
 
+    @Step("Click log in button")
+    public void clickLogInButton() {
+        loginButton.click();
+    }
+
     @Step("Check login form is displayed")
     public void checkLoginFormDisplayed() {
         loginForm.shouldBe(Condition.visible);
+    }
+
+    @Step("Fill in login form")
+    public void fillInLoginFrom(String email, String password) {
+        emailField.setValue(email);
+        passwordField.setValue(password);
+        clickLogInButton();
     }
 }
