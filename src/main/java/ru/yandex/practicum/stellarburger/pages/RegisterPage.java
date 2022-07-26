@@ -25,6 +25,9 @@ public class RegisterPage {
     @FindBy(how = How.XPATH, using = ".//button[text()='Зарегистрироваться']")
     private SelenideElement registerButton;
 
+    @FindBy(how = How.LINK_TEXT,using = "Войти")
+    private SelenideElement loginLink;
+
     @Step("Fill in the name field")
     public void setName(String name) {
         nameField.setValue(name);
@@ -43,6 +46,11 @@ public class RegisterPage {
     @Step("Click register button")
     public void clickRegisterButton() {
         registerButton.click();
+    }
+
+    @Step("Click \"Войти\" link")
+    public void clickLoginLink() {
+        loginLink.click();
     }
 
     @Step("Fill in registration form")
