@@ -19,7 +19,7 @@ public class MainPage {
     private SelenideElement makeOrderButton;
 
     @Step("Click \"Личный Кабинет\" button")
-    public void clickUserAccountButton() {
+    public void clickUserAccountLink() {
         userAccountLink.click();
     }
 
