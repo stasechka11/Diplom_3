@@ -9,6 +9,7 @@ import ru.yandex.practicum.stellarburger.api.UserClient;
 import ru.yandex.practicum.stellarburger.api.UserResponse;
 import ru.yandex.practicum.stellarburger.pages.LoginPage;
 import ru.yandex.practicum.stellarburger.pages.MainPage;
+import ru.yandex.practicum.stellarburger.pages.RegisterPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
@@ -43,13 +44,23 @@ public class LoginUserTest {
     }
 
     @Test
-    @DisplayName("Check user login by \"Личный кабинет\" link")
-    public void
-    checkLoginByUserAccountLinkMainPage() {
+    @DisplayName("Check user login by \"Личный кабинет\" link on main page")
+    public void checkLoginByUserAccountLinkMainPage() {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
         mainPage.clickUserAccountLink();
         LoginPage loginPage = page(LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
+        mainPage.checkMakeOrderButtonIsVisible();
+    }
+
+    @Test
+    @DisplayName("Check user login by \"Войти\" link on registration page")
+    public void checkLoginByLoginLinkRegisterPage() {
+        RegisterPage registerPage = open(MAIN_PAGE_URL + "register", RegisterPage.class);
+        registerPage.clickLoginLink();
+        LoginPage loginPage = page(LoginPage.class);
+        loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
+        MainPage mainPage = page(MainPage.class);
         mainPage.checkMakeOrderButtonIsVisible();
     }
 }
