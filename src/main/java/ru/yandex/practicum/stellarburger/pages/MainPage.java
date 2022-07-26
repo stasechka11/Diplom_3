@@ -1,5 +1,6 @@
 package ru.yandex.practicum.stellarburger.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
@@ -11,10 +12,24 @@ public class MainPage {
     @FindBy(how = How.LINK_TEXT,using = "Личный Кабинет")
     private SelenideElement userAccountLink;
 
-    @Step("Click user account button")
+    @FindBy(how = How.XPATH, using = ".//button[text()='Войти в аккаунт']")
+    private SelenideElement logInAccountButton;
+
+    @FindBy(how = How.XPATH, using = ".//button[text()='Оформить заказ']")
+    private SelenideElement makeOrderButton;
+
+    @Step("Click \"Личный Кабинет\" button")
     public void clickUserAccountButton() {
         userAccountLink.click();
     }
 
+    @Step("Click \"Войти в аккаунт\"")
+    public void clickLogInButton() {
+        logInAccountButton.click();
+    }
 
+    @Step("Check \"Оформить заказ\" is visible")
+    public void checkMakeOrderButtonIsVisible() {
+        makeOrderButton.shouldBe(Condition.visible);
+    }
 }
