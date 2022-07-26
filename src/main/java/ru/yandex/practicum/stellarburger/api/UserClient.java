@@ -21,6 +21,16 @@ public class UserClient {
                 .setContentType(ContentType.JSON).build();
     }
 
+    @Step ("Create user {user}")
+    public Response createUser(User user) {
+        return given()
+                .spec(getReqSpec())
+                .body(user)
+                .when()
+                .log().all()
+                .post(BASE_URL + BASE_PATH_USER + "register");
+    }
+
     @Step("Login user {userCredentials}")
     public Response loginUser(UserCredentials userCredentials) {
         return given()
