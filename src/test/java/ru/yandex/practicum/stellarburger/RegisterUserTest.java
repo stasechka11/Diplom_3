@@ -26,21 +26,24 @@ public class RegisterUserTest {
 
     @Before
     public void setUp() {
-        user = User.getRandomUser();
+
     }
 
     @After
     public void clear() {
-        userClient = new UserClient();
-        userCredentials = new UserCredentials(user.getEmail(), user.getPassword());
-        UserResponse loginUserResponse = userClient.loginUser(userCredentials).as(UserResponse.class);
-        accessToken = loginUserResponse.getAccessToken();
-        userClient.deleteUser(accessToken);
+        if(!(user ==null)) {
+            userClient = new UserClient();
+            userCredentials = new UserCredentials(user.getEmail(), user.getPassword());
+            UserResponse loginUserResponse = userClient.loginUser(userCredentials).as(UserResponse.class);
+            accessToken = loginUserResponse.getAccessToken();
+            userClient.deleteUser(accessToken);
+        }
     }
 
     @Test
     @DisplayName("Check user registration")
     public void registerUserTest() {
+        user = User.getRandomUser();
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
         mainPage.clickUserAccountButton();
         LoginPage loginPage = page(LoginPage.class);
@@ -50,5 +53,12 @@ public class RegisterUserTest {
         registerPage.fillInRegistrationForm(user.getName(), user.getEmail(), user.getPassword());
 
         loginPage.checkLoginFormDisplayed();
+    }
+
+    @Test
+    @DisplayName("Check error message when password's length is less 6 characters")
+    public void checkInCorrectPasswordMessage() {
+        RegisterPage registerPage = open(MAIN_PAGE_URL + "register", RegisterPage.class);
+        registerPage.checkPasswordErrorMessage();
     }
 }
