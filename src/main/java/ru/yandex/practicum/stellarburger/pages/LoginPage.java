@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class LoginPage {
+public class LoginPage extends HeaderPage {
     @FindBy(how = How.XPATH, using = ".//form[contains(@class,'Auth_form')]")
     private SelenideElement loginForm;
 

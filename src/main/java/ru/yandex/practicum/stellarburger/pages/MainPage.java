@@ -6,22 +6,13 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class MainPage {
-    public static final String  MAIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/";
-
-    @FindBy(how = How.LINK_TEXT,using = "Личный Кабинет")
-    private SelenideElement userAccountLink;
+public class MainPage extends HeaderPage {
 
     @FindBy(how = How.XPATH, using = ".//button[text()='Войти в аккаунт']")
     private SelenideElement logInAccountButton;
 
     @FindBy(how = How.XPATH, using = ".//button[text()='Оформить заказ']")
     private SelenideElement makeOrderButton;
-
-    @Step("Click \"Личный Кабинет\" button")
-    public void clickUserAccountLink() {
-        userAccountLink.click();
-    }
 
     @Step("Click \"Войти в аккаунт\"")
     public void clickLogInButton() {
