@@ -7,6 +7,7 @@ import org.junit.Test;
 import ru.yandex.practicum.stellarburger.api.User;
 import ru.yandex.practicum.stellarburger.api.UserClient;
 import ru.yandex.practicum.stellarburger.api.UserResponse;
+import ru.yandex.practicum.stellarburger.pages.ForgotPasswordPage;
 import ru.yandex.practicum.stellarburger.pages.LoginPage;
 import ru.yandex.practicum.stellarburger.pages.MainPage;
 import ru.yandex.practicum.stellarburger.pages.RegisterPage;
@@ -45,7 +46,7 @@ public class LoginUserTest {
 
     @Test
     @DisplayName("Check user login by \"Личный кабинет\" link on main page")
-    public void checkLoginByUserAccountLinkMainPage() {
+    public void checkLoginByUserAccountLinkMainPageTest() {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
         mainPage.clickUserAccountLink();
         LoginPage loginPage = page(LoginPage.class);
@@ -55,9 +56,20 @@ public class LoginUserTest {
 
     @Test
     @DisplayName("Check user login by \"Войти\" link on registration page")
-    public void checkLoginByLoginLinkRegisterPage() {
+    public void checkLoginRegisterPageTest() {
         RegisterPage registerPage = open(MAIN_PAGE_URL + "register", RegisterPage.class);
         registerPage.clickLoginLink();
+        LoginPage loginPage = page(LoginPage.class);
+        loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
+        MainPage mainPage = page(MainPage.class);
+        mainPage.checkMakeOrderButtonIsVisible();
+    }
+
+    @Test
+    @DisplayName("Check user login on forgot password page")
+    public void checkLoginForgotPasswordPageTest() {
+        ForgotPasswordPage forgotPasswordPage = open(MAIN_PAGE_URL + "forgot-password", ForgotPasswordPage.class);
+        forgotPasswordPage.clickLoginLink();
         LoginPage loginPage = page(LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
         MainPage mainPage = page(MainPage.class);
