@@ -10,6 +10,7 @@ import ru.yandex.practicum.stellarburger.pages.LoginPage;
 import ru.yandex.practicum.stellarburger.pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.*;
 import static com.codeborne.selenide.WebDriverConditions.*;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 
@@ -31,6 +32,7 @@ public class NavigationTest {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
         mainPage.clickUserAccountLink();
         LoginPage loginPage = page(LoginPage.class);
+        webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL + "login"));
         loginPage.checkLoginFormDisplayed();
     }
 
@@ -48,6 +50,14 @@ public class NavigationTest {
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
 
         mainPage.clickUserAccountLink();
-        webdriver().shouldHave(urlContaining("/account/profile"));
+        webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL + "account/profile"));
+    }
+
+    @Test
+    @DisplayName("Check navigation to main page by clicking Constructor link")
+    public void navigateMainPageConstructorLink() {
+        MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
+        mainPage.clickConstructorLink();
+        webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL));
     }
 }
