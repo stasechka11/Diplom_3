@@ -10,7 +10,6 @@ import ru.yandex.practicum.stellarburger.pages.LoginPage;
 import ru.yandex.practicum.stellarburger.pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.*;
 import static com.codeborne.selenide.WebDriverConditions.*;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 
@@ -38,7 +37,7 @@ public class NavigationTest {
 
     @Test
     @DisplayName("Check navigation to user account when user already logged in")
-    public void navigateToAccountUserLoggedIn() {
+    public void navigateToAccountUserLoggedInTest() {
         user = User.getRandomUser();
         userClient = new UserClient();
         UserResponse createUserResponse = userClient.createUser(user).as(UserResponse.class);
@@ -54,10 +53,17 @@ public class NavigationTest {
     }
 
     @Test
-    @DisplayName("Check navigation to main page by clicking Constructor link")
-    public void navigateMainPageConstructorLink() {
-        MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
-        mainPage.clickConstructorLink();
+    @DisplayName("Check navigation from user account to main page by clicking Constructor link")
+    public void navigateMainPageConstructorLinkTest() {
+        user = User.getRandomUser();
+        userClient = new UserClient();
+        UserResponse createUserResponse = userClient.createUser(user).as(UserResponse.class);
+        accessToken = createUserResponse.getAccessToken();
+
+        LoginPage loginPage = open(MAIN_PAGE_URL + "login", LoginPage.class);
+        loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
+
+        loginPage.clickConstructorLink();
         webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL));
     }
 }
