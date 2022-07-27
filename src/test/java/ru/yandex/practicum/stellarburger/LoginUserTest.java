@@ -7,13 +7,10 @@ import org.junit.Test;
 import ru.yandex.practicum.stellarburger.api.User;
 import ru.yandex.practicum.stellarburger.api.UserClient;
 import ru.yandex.practicum.stellarburger.api.UserResponse;
-import ru.yandex.practicum.stellarburger.pages.ForgotPasswordPage;
-import ru.yandex.practicum.stellarburger.pages.LoginPage;
-import ru.yandex.practicum.stellarburger.pages.MainPage;
-import ru.yandex.practicum.stellarburger.pages.RegisterPage;
+import ru.yandex.practicum.stellarburger.pages.*;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverConditions.currentFrameUrl;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 
 public class LoginUserTest {
@@ -74,5 +71,18 @@ public class LoginUserTest {
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
         MainPage mainPage = page(MainPage.class);
         mainPage.checkMakeOrderButtonIsVisible();
+    }
+
+    @Test
+    @DisplayName("Check user log out")
+    public void userLogOutTest() {
+        LoginPage loginPage = open(MAIN_PAGE_URL + "login", LoginPage.class);
+        loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
+        loginPage.clickUserAccountLink();
+
+        ProfilePage profilePage = page(ProfilePage.class);
+        profilePage.clickLogOutButton();
+
+        loginPage.checkLoginFormDisplayed();
     }
 }
