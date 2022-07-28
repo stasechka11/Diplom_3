@@ -66,4 +66,29 @@ public class NavigationTest {
         loginPage.clickConstructorLink();
         webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL));
     }
+
+    @Test
+    @DisplayName("Check navigation to buns section in constructor")
+    public void constructorBunsNavigationTest() {
+        MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
+        mainPage.clickSauceSection();
+        mainPage.clickBunsSection();
+        mainPage.checkBunsSectionIsVisible();
+    }
+
+    @Test
+    @DisplayName("Check navigation to sauce section in constructor")
+    public void constructorSauceNavigationTest() {
+        MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
+        mainPage.clickSauceSection();
+        mainPage.checkSauceSectionIsVisible();
+    }
+
+    @Test
+    @DisplayName("Check navigation to filling section in constructor")
+    public void constructorFillingNavigationTest() {
+        MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
+        mainPage.clickFillingSection();
+        mainPage.checkFillingSectionIsVisible();
+    }
 }
