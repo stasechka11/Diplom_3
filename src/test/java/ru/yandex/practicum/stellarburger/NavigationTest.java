@@ -68,6 +68,21 @@ public class NavigationTest {
     }
 
     @Test
+    @DisplayName("Check navigation from user account to main page by clicking StellarBurgers logo")
+    public void navigateMainPageStellarBurgersLogoTest() {
+        user = User.getRandomUser();
+        userClient = new UserClient();
+        UserResponse createUserResponse = userClient.createUser(user).as(UserResponse.class);
+        accessToken = createUserResponse.getAccessToken();
+
+        LoginPage loginPage = open(MAIN_PAGE_URL + "login", LoginPage.class);
+        loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
+
+        loginPage.clickStellarBurgersLogo();
+        webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL));
+    }
+
+    @Test
     @DisplayName("Check navigation to buns section in constructor")
     public void constructorBunsNavigationTest() {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
