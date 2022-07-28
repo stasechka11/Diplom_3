@@ -33,7 +33,7 @@ public class MainPage extends HeaderPage {
 
     @Step("Select buns section in constructor")
     public void clickBunsSection() {
-        bunIngredientType.scrollIntoView(true).click();
+        bunIngredientType.click();
     }
     @Step("Select sauce section in constructor")
     public void clickSauceSection() {
