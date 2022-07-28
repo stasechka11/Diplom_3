@@ -16,6 +16,7 @@ import ru.yandex.practicum.stellarburger.pages.RegisterPage;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
+import static ru.yandex.practicum.stellarburger.pages.RegisterPage.REGISTER_PAGE_PATH;
 
 public class RegisterUserTest {
     User user;
@@ -57,7 +58,7 @@ public class RegisterUserTest {
     @Test
     @DisplayName("Check error message when password's length is less 6 characters")
     public void checkInCorrectPasswordMessage() {
-        RegisterPage registerPage = open(MAIN_PAGE_URL + "register", RegisterPage.class);
+        RegisterPage registerPage = open(MAIN_PAGE_URL + REGISTER_PAGE_PATH, RegisterPage.class);
         registerPage.checkPasswordErrorMessage();
     }
 }

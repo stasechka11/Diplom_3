@@ -8,6 +8,7 @@ import ru.yandex.practicum.stellarburger.pages.MainPage;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.currentFrameUrl;
 import static ru.yandex.practicum.stellarburger.pages.HeaderPage.MAIN_PAGE_URL;
+import static ru.yandex.practicum.stellarburger.pages.LoginPage.LOGIN_PAGE_PATH;
 
 public class NavigationTest {
     @Test
@@ -16,7 +17,7 @@ public class NavigationTest {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
         mainPage.clickUserAccountLink();
         LoginPage loginPage = page(LoginPage.class);
-        webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL + "login"));
+        webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL + LOGIN_PAGE_PATH));
         loginPage.checkLoginFormDisplayed();
     }
 

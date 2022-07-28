@@ -12,7 +12,9 @@ import ru.yandex.practicum.stellarburger.pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.*;
+import static ru.yandex.practicum.stellarburger.pages.LoginPage.LOGIN_PAGE_PATH;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
+import static ru.yandex.practicum.stellarburger.pages.ProfilePage.PROFILE_PAGE_PATH;
 
 public class NavigationLoggedUserTest {
     User user;
@@ -41,13 +43,13 @@ public class NavigationLoggedUserTest {
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
 
         mainPage.clickUserAccountLink();
-        webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL + "account/profile"));
+        webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL + PROFILE_PAGE_PATH));
     }
 
     @Test
     @DisplayName("Check navigation from user account to main page by clicking Constructor link")
     public void navigateMainPageConstructorLinkTest() {
-        LoginPage loginPage = open(MAIN_PAGE_URL + "login", LoginPage.class);
+        LoginPage loginPage = open(MAIN_PAGE_URL + LOGIN_PAGE_PATH, LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
 
         loginPage.clickConstructorLink();
@@ -57,7 +59,7 @@ public class NavigationLoggedUserTest {
     @Test
     @DisplayName("Check navigation from user account to main page by clicking StellarBurgers logo")
     public void navigateMainPageStellarBurgersLogoTest() {
-        LoginPage loginPage = open(MAIN_PAGE_URL + "login", LoginPage.class);
+        LoginPage loginPage = open(MAIN_PAGE_URL + LOGIN_PAGE_PATH, LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
 
         loginPage.clickStellarBurgersLogo();

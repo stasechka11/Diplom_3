@@ -11,7 +11,10 @@ import ru.yandex.practicum.stellarburger.pages.*;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.currentFrameUrl;
+import static ru.yandex.practicum.stellarburger.pages.ForgotPasswordPage.FORGOT_PASSWORD_PAGE_PATH;
+import static ru.yandex.practicum.stellarburger.pages.LoginPage.LOGIN_PAGE_PATH;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
+import static ru.yandex.practicum.stellarburger.pages.RegisterPage.REGISTER_PAGE_PATH;
 
 public class LoginUserTest {
     User user;
@@ -54,7 +57,7 @@ public class LoginUserTest {
     @Test
     @DisplayName("Check user login by \"Войти\" link on registration page")
     public void checkLoginRegisterPageTest() {
-        RegisterPage registerPage = open(MAIN_PAGE_URL + "register", RegisterPage.class);
+        RegisterPage registerPage = open(MAIN_PAGE_URL + REGISTER_PAGE_PATH, RegisterPage.class);
         registerPage.clickLoginLink();
         LoginPage loginPage = page(LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
@@ -65,7 +68,7 @@ public class LoginUserTest {
     @Test
     @DisplayName("Check user login on forgot password page")
     public void checkLoginForgotPasswordPageTest() {
-        ForgotPasswordPage forgotPasswordPage = open(MAIN_PAGE_URL + "forgot-password", ForgotPasswordPage.class);
+        ForgotPasswordPage forgotPasswordPage = open(MAIN_PAGE_URL + FORGOT_PASSWORD_PAGE_PATH, ForgotPasswordPage.class);
         forgotPasswordPage.clickLoginLink();
         LoginPage loginPage = page(LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
@@ -76,7 +79,7 @@ public class LoginUserTest {
     @Test
     @DisplayName("Check user log out")
     public void userLogOutTest() {
-        LoginPage loginPage = open(MAIN_PAGE_URL + "login", LoginPage.class);
+        LoginPage loginPage = open(MAIN_PAGE_URL + LOGIN_PAGE_PATH, LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
         loginPage.clickUserAccountLink();
 
