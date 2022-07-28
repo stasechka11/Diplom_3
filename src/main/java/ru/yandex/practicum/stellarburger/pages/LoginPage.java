@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class LoginPage extends HeaderPage {
+    public static final String LOGIN_PAGE_PATH = "login";
+
     @FindBy(how = How.XPATH, using = ".//form[contains(@class,'Auth_form')]")
     private SelenideElement loginForm;
 

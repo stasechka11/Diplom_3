@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class RegisterPage extends HeaderPage {
+    public static final String REGISTER_PAGE_PATH = "register";
     public static final String INCORRECT_PASSWORD_MESSAGE = "Некорректный пароль";
 
     @FindBy(how = How.XPATH, using = ".//label[text()='Имя']/following-sibling::input")

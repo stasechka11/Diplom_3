@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class ProfilePage extends HeaderPage {
+    public static final String PROFILE_PAGE_PATH = "account/profile";
+
     @FindBy(how = How.XPATH, using = ".//button[text()='Выход']")
     private SelenideElement logOutButton;
 

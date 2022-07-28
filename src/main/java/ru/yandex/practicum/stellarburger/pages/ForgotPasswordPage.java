@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class ForgotPasswordPage {
+    public static final String FORGOT_PASSWORD_PAGE_PATH = "forgot-password";
     @FindBy(how = How.LINK_TEXT,using = "Войти")
     private SelenideElement loginLink;
 
