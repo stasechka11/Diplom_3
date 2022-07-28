@@ -11,6 +11,9 @@ public class HeaderPage {
     @FindBy(how = How.LINK_TEXT,using = "Личный Кабинет")
     private SelenideElement userAccountLink;
 
+    @FindBy(how = How.XPATH, using = ".//div[contains(@class,'logo')]")
+    private SelenideElement stellarBurgersLogo;
+
     @FindBy(how = How.LINK_TEXT, using = "Конструктор")
     private SelenideElement constructorLink;
 
@@ -22,5 +25,10 @@ public class HeaderPage {
     @Step("Click constructor link")
     public void clickConstructorLink() {
         constructorLink.click();
+    }
+
+    @Step("Click StellarBurgers logo")
+    public void clickStellarBurgersLogo() {
+        stellarBurgersLogo.click();
     }
 }
