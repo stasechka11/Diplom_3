@@ -1,6 +1,8 @@
 package ru.yandex.practicum.stellarburger;
 
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.practicum.stellarburger.pages.LoginPage;
 import ru.yandex.practicum.stellarburger.pages.MainPage;
@@ -10,7 +12,19 @@ import static com.codeborne.selenide.WebDriverConditions.currentFrameUrl;
 import static ru.yandex.practicum.stellarburger.pages.HeaderPage.MAIN_PAGE_URL;
 import static ru.yandex.practicum.stellarburger.pages.LoginPage.LOGIN_PAGE_PATH;
 
-public class NavigationTest {
+public class NavigationTest extends BaseTest {
+    @Before
+    public void setUp() {
+        setUpBrowser();
+    }
+
+    @After
+    public void clear() {
+        if(driver != null) {
+            driver.quit();
+        }
+    }
+
     @Test
     @DisplayName("Check navigation to user account from main page")
     public void navigateToUserAccountTest() {

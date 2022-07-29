@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.page;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 import static ru.yandex.practicum.stellarburger.pages.RegisterPage.REGISTER_PAGE_PATH;
 
-public class RegisterUserTest {
+public class RegisterUserTest extends BaseTest {
     User user;
     UserCredentials userCredentials;
     UserClient userClient;
@@ -26,11 +26,14 @@ public class RegisterUserTest {
 
     @Before
     public void setUp() {
-
+        setUpBrowser();
     }
 
     @After
     public void clear() {
+        if(driver != null) {
+            driver.quit();
+        }
         if(!(user ==null)) {
             userClient = new UserClient();
             userCredentials = new UserCredentials(user.getEmail(), user.getPassword());

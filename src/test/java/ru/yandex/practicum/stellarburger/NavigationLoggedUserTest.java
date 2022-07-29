@@ -16,13 +16,14 @@ import static ru.yandex.practicum.stellarburger.pages.LoginPage.LOGIN_PAGE_PATH;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 import static ru.yandex.practicum.stellarburger.pages.ProfilePage.PROFILE_PAGE_PATH;
 
-public class NavigationLoggedUserTest {
+public class NavigationLoggedUserTest extends BaseTest {
     User user;
     UserClient userClient;
     String accessToken;
 
     @Before
     public void setUp() {
+        setUpBrowser();
         user = User.getRandomUser();
         userClient = new UserClient();
         UserResponse createUserResponse = userClient.createUser(user).as(UserResponse.class);
@@ -31,6 +32,9 @@ public class NavigationLoggedUserTest {
 
     @After
     public void clear() {
+        if(driver != null) {
+            driver.quit();
+        }
             userClient.deleteUser(accessToken);
     }
 
