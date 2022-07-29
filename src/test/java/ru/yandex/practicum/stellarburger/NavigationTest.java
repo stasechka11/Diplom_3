@@ -12,6 +12,7 @@ import static com.codeborne.selenide.WebDriverConditions.currentFrameUrl;
 import static ru.yandex.practicum.stellarburger.pages.HeaderPage.MAIN_PAGE_URL;
 import static ru.yandex.practicum.stellarburger.pages.LoginPage.LOGIN_PAGE_PATH;
 
+@DisplayName("Navigation tests")
 public class NavigationTest extends BaseTest {
     @Before
     public void setUp() {

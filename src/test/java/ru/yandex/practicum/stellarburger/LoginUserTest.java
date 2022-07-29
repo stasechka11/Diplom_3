@@ -10,12 +10,12 @@ import ru.yandex.practicum.stellarburger.api.UserResponse;
 import ru.yandex.practicum.stellarburger.pages.*;
 
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverConditions.currentFrameUrl;
 import static ru.yandex.practicum.stellarburger.pages.ForgotPasswordPage.FORGOT_PASSWORD_PAGE_PATH;
 import static ru.yandex.practicum.stellarburger.pages.LoginPage.LOGIN_PAGE_PATH;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 import static ru.yandex.practicum.stellarburger.pages.RegisterPage.REGISTER_PAGE_PATH;
 
+@DisplayName("Login user tests")
 public class LoginUserTest extends BaseTest {
     User user;
     UserClient userClient;

@@ -1,6 +1,7 @@
 package ru.yandex.practicum.stellarburger;
 
 
+import io.qameta.allure.Feature;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -17,7 +18,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 import static ru.yandex.practicum.stellarburger.pages.RegisterPage.REGISTER_PAGE_PATH;
-
+@DisplayName("Register user tests")
 public class RegisterUserTest extends BaseTest {
     User user;
     UserCredentials userCredentials;

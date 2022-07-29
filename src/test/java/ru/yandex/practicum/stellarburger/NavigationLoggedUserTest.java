@@ -16,6 +16,7 @@ import static ru.yandex.practicum.stellarburger.pages.LoginPage.LOGIN_PAGE_PATH;
 import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 import static ru.yandex.practicum.stellarburger.pages.ProfilePage.PROFILE_PAGE_PATH;
 
+@DisplayName("Navigation tests when user is logged in")
 public class NavigationLoggedUserTest extends BaseTest {
     User user;
     UserClient userClient;
