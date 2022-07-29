@@ -1,9 +1,10 @@
-package ru.yandex.practicum.stellarburger;
+package ru.yandex.practicum.stellarburger.tests;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.yandex.practicum.stellarburger.BaseTest;
 import ru.yandex.practicum.stellarburger.pages.LoginPage;
 import ru.yandex.practicum.stellarburger.pages.MainPage;
 
