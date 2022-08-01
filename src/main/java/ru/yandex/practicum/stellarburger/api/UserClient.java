@@ -18,7 +18,8 @@ public class UserClient {
     public static RequestSpecification getReqSpec() {
         return new RequestSpecBuilder().log(LogDetail.ALL)
                 .addFilter(new AllureRestAssured())
-                .setContentType(ContentType.JSON).build();
+                .setContentType(ContentType.JSON)
+                .setBaseUri(BASE_URL).build();
     }
 
     @Step ("Create user {user}")
@@ -28,7 +29,7 @@ public class UserClient {
                 .body(user)
                 .when()
                 .log().all()
-                .post(BASE_URL + BASE_PATH_USER + "register");
+                .post(BASE_PATH_USER + "register");
     }
 
     @Step("Login user {userCredentials}")
@@ -38,7 +39,7 @@ public class UserClient {
                 .body(userCredentials)
                 .when()
                 .log().all()
-                .post(BASE_URL + BASE_PATH_USER + "login");
+                .post(BASE_PATH_USER + "login");
     }
 
     @Step ("Delete user by accessToken: {accessToken}")
@@ -48,7 +49,7 @@ public class UserClient {
                 .header("Authorization", accessToken)
                 .when()
                 .log().all()
-                .delete(BASE_URL + BASE_PATH_USER + "user")
+                .delete(BASE_PATH_USER + "user")
                 .then()
                 .assertThat()
                 .statusCode(SC_ACCEPTED);
