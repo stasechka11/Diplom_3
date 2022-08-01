@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class HeaderPage {
-    public static final String  MAIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/";
 
     @FindBy(how = How.LINK_TEXT,using = "Личный Кабинет")
     private SelenideElement userAccountLink;

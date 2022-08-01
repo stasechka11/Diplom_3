@@ -53,7 +53,7 @@ public class LoginUserTest extends BaseTest {
     @DisplayName("Check user login by \"Личный кабинет\" link on main page")
     public void checkLoginByUserAccountLinkMainPageTest() {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
-        mainPage.clickUserAccountLink();
+        mainPage.header.clickUserAccountLink();
         LoginPage loginPage = page(LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
         mainPage.checkMakeOrderButtonIsVisible();
@@ -86,7 +86,7 @@ public class LoginUserTest extends BaseTest {
     public void userLogOutTest() {
         LoginPage loginPage = open(MAIN_PAGE_URL + LOGIN_PAGE_PATH, LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
-        loginPage.clickUserAccountLink();
+        loginPage.header.clickUserAccountLink();
 
         ProfilePage profilePage = page(ProfilePage.class);
         profilePage.clickLogOutButton();

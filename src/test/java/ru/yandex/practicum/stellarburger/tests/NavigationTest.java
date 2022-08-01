@@ -10,8 +10,8 @@ import ru.yandex.practicum.stellarburger.pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.currentFrameUrl;
-import static ru.yandex.practicum.stellarburger.pages.HeaderPage.MAIN_PAGE_URL;
 import static ru.yandex.practicum.stellarburger.pages.LoginPage.LOGIN_PAGE_PATH;
+import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 
 @DisplayName("Navigation tests")
 public class NavigationTest extends BaseTest {
@@ -31,7 +31,7 @@ public class NavigationTest extends BaseTest {
     @DisplayName("Check navigation to user account from main page")
     public void navigateToUserAccountTest() {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
-        mainPage.clickUserAccountLink();
+        mainPage.header.clickUserAccountLink();
         LoginPage loginPage = page(LoginPage.class);
         webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL + LOGIN_PAGE_PATH));
         loginPage.checkLoginFormDisplayed();

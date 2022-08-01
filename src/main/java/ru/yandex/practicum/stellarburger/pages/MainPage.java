@@ -6,8 +6,11 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class MainPage extends HeaderPage {
+import static com.codeborne.selenide.Selenide.page;
 
+public class MainPage  {
+    public static final String  MAIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/";
+    public HeaderPage header = page(HeaderPage.class);
     @FindBy (how = How.XPATH, using = ".//span[text()='Булки']")
     private SelenideElement bunIngredientType;
 

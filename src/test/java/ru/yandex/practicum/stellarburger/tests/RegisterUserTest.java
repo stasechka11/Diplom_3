@@ -1,7 +1,6 @@
 package ru.yandex.practicum.stellarburger.tests;
 
 
-import io.qameta.allure.Feature;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -50,7 +49,7 @@ public class RegisterUserTest extends BaseTest {
     public void registerUserTest() {
         user = User.getRandomUser();
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
-        mainPage.clickUserAccountLink();
+        mainPage.header.clickUserAccountLink();
         LoginPage loginPage = page(LoginPage.class);
         loginPage.clickRegisterLink();
 

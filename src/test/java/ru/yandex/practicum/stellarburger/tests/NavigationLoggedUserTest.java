@@ -48,7 +48,7 @@ public class NavigationLoggedUserTest extends BaseTest {
         LoginPage loginPage = page(LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
 
-        mainPage.clickUserAccountLink();
+        mainPage.header.clickUserAccountLink();
         webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL + PROFILE_PAGE_PATH));
     }
 
@@ -58,7 +58,7 @@ public class NavigationLoggedUserTest extends BaseTest {
         LoginPage loginPage = open(MAIN_PAGE_URL + LOGIN_PAGE_PATH, LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
 
-        loginPage.clickConstructorLink();
+        loginPage.header.clickConstructorLink();
         webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL));
     }
 
@@ -68,7 +68,7 @@ public class NavigationLoggedUserTest extends BaseTest {
         LoginPage loginPage = open(MAIN_PAGE_URL + LOGIN_PAGE_PATH, LoginPage.class);
         loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
 
-        loginPage.clickStellarBurgersLogo();
+        loginPage.header.clickStellarBurgersLogo();
         webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL));
     }
 }
