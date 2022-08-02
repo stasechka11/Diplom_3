@@ -18,9 +18,9 @@ import static ru.yandex.practicum.stellarburger.pages.RegisterPage.REGISTER_PAGE
 
 @DisplayName("Login user tests")
 public class LoginUserTest extends BaseTest {
-    User user;
-    UserClient userClient;
-    String accessToken;
+    private User user;
+    private UserClient userClient;
+    private String accessToken;
 
     @Before
     public void setUp() {

@@ -22,10 +22,7 @@ import static ru.yandex.practicum.stellarburger.pages.MainPage.MAIN_PAGE_URL;
 import static ru.yandex.practicum.stellarburger.pages.RegisterPage.REGISTER_PAGE_PATH;
 @DisplayName("Register user tests")
 public class RegisterUserTest extends BaseTest {
-    User user;
-    UserCredentials userCredentials;
-    UserClient userClient;
-    String accessToken;
+    private User user;
 
     @Before
     public void setUp() {
@@ -38,10 +35,10 @@ public class RegisterUserTest extends BaseTest {
             driver.quit();
         }
         if(!(user ==null)) {
-            userClient = new UserClient();
-            userCredentials = new UserCredentials(user.getEmail(), user.getPassword());
+            UserClient userClient = new UserClient();
+            UserCredentials userCredentials = new UserCredentials(user.getEmail(), user.getPassword());
             UserResponse loginUserResponse = userClient.loginUser(userCredentials).as(UserResponse.class);
-            accessToken = loginUserResponse.getAccessToken();
+            String accessToken = loginUserResponse.getAccessToken();
             userClient.deleteUser(accessToken);
         }
     }

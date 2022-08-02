@@ -19,9 +19,9 @@ import static ru.yandex.practicum.stellarburger.pages.ProfilePage.PROFILE_PAGE_P
 
 @DisplayName("Navigation tests when user is logged in")
 public class NavigationLoggedUserTest extends BaseTest {
-    User user;
-    UserClient userClient;
-    String accessToken;
+    private User user;
+    private UserClient userClient;
+    private String accessToken;
 
     @Before
     public void setUp() {
