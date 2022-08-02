@@ -2,7 +2,6 @@ package ru.yandex.practicum.stellarburger.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -63,9 +62,8 @@ public class RegisterPage {
     }
 
     @Step("Check incorrect password message")
-    public void checkPasswordErrorMessage() {
-        Faker faker = new Faker();
-        setPassword(faker.bothify("##??"));
+    public void checkPasswordErrorMessage(String password) {
+        setPassword(password);
         clickRegisterButton();
         passwordErrorMessage.shouldBe(Condition.visible);
         passwordErrorMessage.shouldHave(Condition.exactText(INCORRECT_PASSWORD_MESSAGE));

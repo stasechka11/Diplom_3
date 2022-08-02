@@ -1,7 +1,9 @@
 package ru.yandex.practicum.stellarburger.tests;
 
 
+import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,6 +65,6 @@ public class RegisterUserTest extends BaseTest {
     @DisplayName("Check error message when password's length is less 6 characters")
     public void checkInCorrectPasswordMessage() {
         RegisterPage registerPage = open(MAIN_PAGE_URL + REGISTER_PAGE_PATH, RegisterPage.class);
-        registerPage.checkPasswordErrorMessage();
+        registerPage.checkPasswordErrorMessage(RandomStringUtils.randomAlphanumeric(1, 6));
     }
 }
