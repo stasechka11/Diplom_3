@@ -2,6 +2,7 @@ package ru.yandex.practicum.stellarburger.tests;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.practicum.stellarburger.BaseTest;
@@ -22,7 +23,7 @@ public class NavigationTest extends BaseTest {
 
     @After
     public void clear() {
-        if(driver != null) {
+        if (driver != null) {
             driver.quit();
         }
     }
@@ -43,7 +44,7 @@ public class NavigationTest extends BaseTest {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
         mainPage.clickSauceSection();
         mainPage.clickBunsSection();
-        mainPage.checkBunsSectionIsVisible();
+        mainPage.checkSectionIsCurrent("Булки");
     }
 
     @Test
@@ -51,7 +52,7 @@ public class NavigationTest extends BaseTest {
     public void constructorSauceNavigationTest() {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
         mainPage.clickSauceSection();
-        mainPage.checkSauceSectionIsVisible();
+        mainPage.checkSectionIsCurrent("Соусы");
     }
 
     @Test
@@ -59,6 +60,6 @@ public class NavigationTest extends BaseTest {
     public void constructorFillingNavigationTest() {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
         mainPage.clickFillingSection();
-        mainPage.checkFillingSectionIsVisible();
+        mainPage.checkSectionIsCurrent("Начинки");
     }
 }

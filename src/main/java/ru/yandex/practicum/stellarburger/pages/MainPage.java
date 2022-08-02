@@ -26,6 +26,9 @@ public class MainPage  {
     @FindBy (how = How.XPATH, using = ".//h2[text()='Соусы']")
     private SelenideElement sauceSection;
 
+    @FindBy (how = How.XPATH, using = ".//div[contains(@class,'current')]/span")
+    private SelenideElement currentSection;
+
     @FindBy (how = How.XPATH, using = ".//h2[text()='Начинки']")
     private SelenideElement fillingSection;
     @FindBy(how = How.XPATH, using = ".//button[text()='Войти в аккаунт']")
@@ -52,19 +55,9 @@ public class MainPage  {
         logInAccountButton.click();
     }
 
-    @Step("Check buns section is displayed")
-    public void checkBunsSectionIsVisible() {
-        bunSection.shouldBe(Condition.visible);
-    }
-
-    @Step("Check sauce section is displayed")
-    public void checkSauceSectionIsVisible() {
-        sauceSection.shouldBe(Condition.visible);
-    }
-
-    @Step("Check filling section is displayed")
-    public void checkFillingSectionIsVisible() {
-        fillingSection.shouldBe(Condition.visible);
+    @Step("Check section {section} is current")
+    public void checkSectionIsCurrent(String section) {
+        currentSection.shouldHave(Condition.text(section));
     }
 
     @Step("Check \"Оформить заказ\" is visible")
