@@ -1,9 +1,11 @@
 package ru.yandex.practicum.stellarburger.tests;
 
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Cookie;
 import ru.yandex.practicum.stellarburger.BaseTest;
 import ru.yandex.practicum.stellarburger.api.User;
 import ru.yandex.practicum.stellarburger.api.UserClient;
@@ -44,9 +46,7 @@ public class NavigationLoggedUserTest extends BaseTest {
     @DisplayName("Check navigation to user account when user already logged in")
     public void navigateToAccountUserLoggedInTest() {
         MainPage mainPage = open(MAIN_PAGE_URL, MainPage.class);
-        mainPage.clickLogInButton();
-        LoginPage loginPage = page(LoginPage.class);
-        loginPage.fillInLoginFrom(user.getEmail(), user.getPassword());
+        localStorage().setItem("accessToken", accessToken);
 
         mainPage.header.clickUserAccountLink();
         webdriver().shouldHave(currentFrameUrl(MAIN_PAGE_URL + PROFILE_PAGE_PATH));
